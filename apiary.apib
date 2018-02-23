@@ -5,6 +5,30 @@ HOST: http://localhost:8111
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
+## Log In [/login]
+
+### Log In [POST]
+
+Erstellt eine neue Business Card
+
++ Request (application/json)
+
+        [
+            {
+                "user":"JohnDoe",
+                "password":"password123"
+            }
+        ]
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token": "xxxxxxx.yyyyyyy.zzzzzzz"
+            }
+
+
 ## Business Cards [/businesscard]
 
 ### Create Business Card [POST]
