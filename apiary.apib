@@ -28,6 +28,37 @@ Erstellt eine neue Business Card
                 "token": "xxxxxxx.yyyyyyy.zzzzzzz"
             }
 
+## Sign In [/signin]
+
+### Log In [POST]
+
+Erstellt eine neue Business Card
+
++ Request (application/json)
+
+        [
+            {
+                "user":"JohnDoe",
+                "e-mail":"john@doe.com",
+                "password":"password123"
+            }
+        ]
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "token": "xxxxxxx.yyyyyyy.zzzzzzz"
+            }
+
+## Confirm [/signin/{confirmationID}]
+
+### Log In [GET]
+
+Erstellt eine neue Business Card
+
++ Response 200
 
 ## Business Cards [/businesscard]
 
