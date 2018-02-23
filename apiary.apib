@@ -1,0 +1,242 @@
+FORMAT: 1A
+HOST: http://localhost:8111
+
+# Business Card API Gateway
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Business Cards [/businesscard]
+
+### Create Business Card [POST]
+
+Erstellt eine neue Business Card
+
++ Request (application/json)
+
+        [
+            {
+                "name": 
+                    {
+                        "title": ["PhD", "Prof"],
+                        "firstname":"John",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "contact":
+                    {
+                        "e-mail":"john@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "details":
+                    {
+                        "business":"CEO",
+                        "compoany":"Microsoft"
+                    }
+            }
+        ]
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "name": 
+                    {
+                        "title": ["PhD", "Prof"],
+                        "firstname":"Joe",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "contact":
+                    {
+                        "e-mail":"joe@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "details":
+                    {
+                        "business":"CTO",
+                        "compoany":"Microsoft"
+                    }
+            }
+
+
+## Business Card [/businesscard/{uuid}]
+
+### Get Own Business Card  [GET]
+
+Lädt die eigene Business Card
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": 
+                    {
+                        "title": ["PhD", "Prof"],
+                        "firstname":"John",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "contact":
+                    {
+                        "e-mail":"john@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "details":
+                    {
+                        "business":"CEO",
+                        "compoany":"Microsoft"
+                    }
+            }
+        ]
+
+### Update Business Card [PUT]
+
+Updated die Business Card für die neuen Felder
+
++ Request (application/json)
+
+        [
+            {
+                "name": 
+                    {
+                        "firstname":"Joe",
+                    },
+                "contact":
+                    {
+                        "e-mail":"joe@doe.com",
+                    },
+                "details":
+                    {
+                        "business":"CTO",
+                    }
+            }
+        ]
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "name": 
+                    {
+                        "title": ["PhD", "Prof"],
+                        "firstname":"Joe",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "contact":
+                    {
+                        "e-mail":"joe@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                        "additionalField2":"additionalField1"
+                    },
+                "details":
+                    {
+                        "business":"CTO",
+                        "compoany":"Microsoft"
+                    }
+            }
+
+## Contacts [/businesscard/{uuid}/contacts/]
+
+### Get Contacts  [GET]
+
+Lädt die eigene Business Card
+
++ Response 200 (application/json)
+
+        {
+                "name": 
+                    {
+                        "title": ["PhD"]
+                        "firstname":"Jane",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                    },
+                "contact":
+                    {
+                        "e-mail":"jane@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                    },
+                "details":
+                    {
+                        "business":"Housewife"
+                    }
+            },
+            {
+                "name": 
+                    {
+                        "firstname":"Will",
+                        "lastname":"Smith"
+                    },
+                "contact":
+                    {
+                        "e-mail":"will@smith.com",
+                        "phone":"555-555-555"
+                    },
+                "details":
+                    {
+                        "business":"Actor",
+                    }
+            }
+
+### Add Contact  [POST]
+
+Fügt einen Kontakt hinzu
+
++ Request (application/json)
+
+        [
+            {
+                "shareLink":"a6df876da5" 
+            }
+        ]
+
++ Response 200 
+
+## Contact [/businesscard/{uuid}/contact/{contactUuid}]
+
+### Get Contact  [GET]
+
+Lädt einen speziellen Kontakt
+
++ Response 200 (application/json)
+
+            {
+                "name": 
+                    {
+                        "title": ["PhD"]
+                        "firstname":"Jane",
+                        "lastname":"Doe",
+                        "additionalField1":"additionalField1",
+                    },
+                "contact":
+                    {
+                        "e-mail":"jane@doe.com",
+                        "phone":"555-555-555",
+                        "additionalField1":"additionalField1",
+                    },
+                "details":
+                    {
+                        "business":"Housewife"
+                    }
+            }
+
+### Delete Contact  [DELETE]
+
+Löscht den Kontakt aus der Liste der Kontakte
+
++ Response 200
