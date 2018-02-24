@@ -20,7 +20,7 @@ Authentifiziert den User gegenüber dem System
             }
         ]
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
 
@@ -177,7 +177,7 @@ Updated die Business Card für die neuen Felder
             }
         ]
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
 
@@ -260,7 +260,7 @@ Fügt einen Kontakt hinzu
             }
         ]
 
-+ Response 200 
++ Response 201 
 
 ## Contact [/businesscard/{uuid}/contact/{contactUuid}]
 
@@ -295,3 +295,15 @@ Lädt einen speziellen Kontakt
 Löscht den Kontakt aus der Liste der Kontakte
 
 + Response 200
+
+## Share [/businesscard/{uuid}/share]
+
+### Get Share Link [GET]
+
+Erstellt oder Lädt einen Share Link zur eigenen Business Card
+
++ Response 200 (application/json)
+
+            {
+                "shareLink":"a987df6"
+            }
