@@ -70,9 +70,9 @@ Erstellt eine neue Business Card
 
         [
             {
-                "name": 
+                "title": ["PhD", "Prof"],
+                "information": 
                     {
-                        "title": ["PhD", "Prof"],
                         "firstname":"John",
                         "lastname":"Doe",
                         "additionalField1":"additionalField1",
@@ -85,7 +85,7 @@ Erstellt eine neue Business Card
                         "additionalField1":"additionalField1",
                         "additionalField2":"additionalField1"
                     },
-                "details":
+                "detail":
                     {
                         "business":"CEO",
                         "compoany":"Microsoft"
@@ -98,9 +98,9 @@ Erstellt eine neue Business Card
     + Body
 
             {
-                "name": 
+                "title": ["PhD", "Prof"],
+                "information": 
                     {
-                        "title": ["PhD", "Prof"],
                         "firstname":"Joe",
                         "lastname":"Doe",
                         "additionalField1":"additionalField1",
@@ -113,7 +113,7 @@ Erstellt eine neue Business Card
                         "additionalField1":"additionalField1",
                         "additionalField2":"additionalField1"
                     },
-                "details":
+                "detail":
                     {
                         "business":"CTO",
                         "compoany":"Microsoft"
@@ -131,9 +131,9 @@ Lädt die eigene Business Card
 
         [
             {
-                "name": 
+                "title": ["PhD", "Prof"],
+                "information": 
                     {
-                        "title": ["PhD", "Prof"],
                         "firstname":"John",
                         "lastname":"Doe",
                         "additionalField1":"additionalField1",
@@ -146,7 +146,7 @@ Lädt die eigene Business Card
                         "additionalField1":"additionalField1",
                         "additionalField2":"additionalField1"
                     },
-                "details":
+                "detail":
                     {
                         "business":"CEO",
                         "compoany":"Microsoft"
@@ -156,21 +156,25 @@ Lädt die eigene Business Card
 
 ### Update Business Card [PUT]
 
-Updated die Business Card für die neuen Felder
+Updated die Business Card für die neuen Felder.
+<br/>Wenn man für das Feld <b>titel</b> ein Element hinzufügt, das schon existiert, wird es gelöscht.
+<br/>Setzt man in einer Map ein Feld auf null setzt, wird es gelöscht.
 
 + Request (application/json)
 
         [
             {
-                "name": 
+                "title": ["PhD"],
+                "information": 
                     {
                         "firstname":"Joe",
+                        "additionalField1": "null"
                     },
                 "contact":
                     {
                         "e-mail":"joe@doe.com",
                     },
-                "details":
+                "detail":
                     {
                         "business":"CTO",
                     }
@@ -182,12 +186,11 @@ Updated die Business Card für die neuen Felder
     + Body
 
             {
-                "name": 
+                "title": ["Prof"],
+                "information": 
                     {
-                        "title": ["PhD", "Prof"],
                         "firstname":"Joe",
                         "lastname":"Doe",
-                        "additionalField1":"additionalField1",
                         "additionalField2":"additionalField1"
                     },
                 "contact":
@@ -197,12 +200,27 @@ Updated die Business Card für die neuen Felder
                         "additionalField1":"additionalField1",
                         "additionalField2":"additionalField1"
                     },
-                "details":
+                "detail":
                     {
                         "business":"CTO",
                         "compoany":"Microsoft"
                     }
             }
+      
+### Delete Business Card [DELETE]
+
+Löschen oder Deaktivieren eigener Business Card
+<br/>Mit dem Feld <b>action</b> kann man bestimmen ob die Business Card deaktiviert oder gelöscht werden soll
+
++ Request (application/json)
+
+        [
+            {
+                "action": "deactivate|delete"
+            }
+        ]
+
++ Response 200 
 
 ## Contacts [/businesscard/{uuid}/contacts/]
 
@@ -213,7 +231,7 @@ Lädt die eigene Business Card
 + Response 200 (application/json)
 
         {
-                "name": 
+                information: 
                     {
                         "title": ["PhD"]
                         "firstname":"Jane",
@@ -226,13 +244,13 @@ Lädt die eigene Business Card
                         "phone":"555-555-555",
                         "additionalField1":"additionalField1",
                     },
-                "details":
+                "detail":
                     {
                         "business":"Housewife"
                     }
             },
             {
-                "name": 
+                information: 
                     {
                         "firstname":"Will",
                         "lastname":"Smith"
@@ -242,7 +260,7 @@ Lädt die eigene Business Card
                         "e-mail":"will@smith.com",
                         "phone":"555-555-555"
                     },
-                "details":
+                "detail":
                     {
                         "business":"Actor",
                     }
@@ -271,7 +289,7 @@ Lädt einen speziellen Kontakt
 + Response 200 (application/json)
 
             {
-                "name": 
+                information: 
                     {
                         "title": ["PhD"]
                         "firstname":"Jane",
@@ -284,7 +302,7 @@ Lädt einen speziellen Kontakt
                         "phone":"555-555-555",
                         "additionalField1":"additionalField1",
                     },
-                "details":
+                "detail":
                     {
                         "business":"Housewife"
                     }
