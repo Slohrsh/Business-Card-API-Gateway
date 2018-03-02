@@ -60,7 +60,7 @@ Validiert die E-Mail adresse und aktiviert den Account
 
 + Response 200
 
-## Account [/account/{confirmationID}]
+## Account [/account/{email}]
 
 ### Update Password/Email [PUT]
 
@@ -78,72 +78,12 @@ Updated das Password und/oder Email
         
 + Response 201
 
-## Business Cards [/businesscard]
-
-### Create Business Card [POST]
-
-Erstellt eine neue Business Card
-
-+ Request (application/json)
-
-        [
-            {
-                "title": ["PhD", "Prof"],
-                "information": 
-                    {
-                        "firstname":"John",
-                        "lastname":"Doe",
-                        "additionalField1":"additionalField1",
-                        "additionalField2":"additionalField1"
-                    },
-                "contact":
-                    {
-                        "e-mail":"john@doe.com",
-                        "phone":"555-555-555",
-                        "additionalField1":"additionalField1",
-                        "additionalField2":"additionalField1"
-                    },
-                "detail":
-                    {
-                        "business":"CEO",
-                        "compoany":"Microsoft"
-                    }
-            }
-        ]
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "title": ["PhD", "Prof"],
-                "information": 
-                    {
-                        "firstname":"Joe",
-                        "lastname":"Doe",
-                        "additionalField1":"additionalField1",
-                        "additionalField2":"additionalField1"
-                    },
-                "contact":
-                    {
-                        "e-mail":"joe@doe.com",
-                        "phone":"555-555-555",
-                        "additionalField1":"additionalField1",
-                        "additionalField2":"additionalField1"
-                    },
-                "detail":
-                    {
-                        "business":"CTO",
-                        "compoany":"Microsoft"
-                    }
-            }
-
-
 ## Business Card [/businesscard/{shareId}]
 
 ### Get Own Business Card  [GET]
 
 Lädt die eigene Business Card
+ShareId ist entweder die ShareId oder die Emailee
 
 + Response 200 (application/json)
 
