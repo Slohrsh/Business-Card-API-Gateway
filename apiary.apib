@@ -5,29 +5,6 @@ HOST: http://localhost:8111
 
 Verwaltung der Business Card und Kontakte
 
-## Log In [/login]
-
-### Log In [POST]
-
-Authentifiziert den User gegenüber dem System
-
-+ Request (application/json)
-
-        [
-            {
-                "user":"JohnDoe",
-                "password":"password123"
-            }
-        ]
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "token": "xxxxxxx.yyyyyyy.zzzzzzz"
-            }
-
 ## Sign In [/register]
 
 ### Sign In [POST]
@@ -38,19 +15,13 @@ Erstellt einen neuen Account
 
         [
             {
-                "user":"JohnDoe",
-                "e-mail":"john@doe.com",
+                "email":"john@doe.com",
                 "password":"password123"
             }
         ]
 
 + Response 201 (application/json)
 
-    + Body
-
-            {
-                "token": "xxxxxxx.yyyyyyy.zzzzzzz"
-            }
 
 ## Confirm [/register/{confirmationID}]
 
@@ -60,7 +31,7 @@ Validiert die E-Mail adresse und aktiviert den Account
 
 + Response 200
 
-## Account [/account/{email}]
+## Account [/account]
 
 ### Update Password/Email [PUT]
 
@@ -70,7 +41,6 @@ Updated das Password und/oder Email
 
         [
             {
-                "name":"JohnDoe",
                 "e-mail":"john@doe.com",
                 "password":"password123"
             }
@@ -78,7 +48,15 @@ Updated das Password und/oder Email
         
 + Response 201
 
-## Business Card [/businesscard/{shareId}]
+### Delete Account [DELETE]
+
+Löschen den Account
+
++ Request (application/json)
+
++ Response 200 
+
+## Business Card [/businesscard]
 
 ### Get Own Business Card  [GET]
 
@@ -164,23 +142,8 @@ Updated die Business Card für die neuen Felder.
                         "compoany":"Microsoft"
                     }
             }
-      
-### Delete Business Card [DELETE]
 
-Löschen oder Deaktivieren eigener Business Card
-<br/>Mit dem Feld <b>action</b> kann man bestimmen ob die Business Card deaktiviert oder gelöscht werden soll
-
-+ Request (application/json)
-
-        [
-            {
-                "action": "deactivate|delete"
-            }
-        ]
-
-+ Response 200 
-
-## Contacts [/businesscard/{shareId}/contacts/]
+## Contacts [/businesscard/contacts]
 
 ### Get Contacts  [GET]
 
@@ -224,6 +187,10 @@ Lädt die eigene Business Card
                     }
             }
 
+
+
+## Contact [/businesscard/contact/{contactshareId}]
+
 ### Add Contact  [POST]
 
 Fügt einen Kontakt hinzu
@@ -237,34 +204,6 @@ Fügt einen Kontakt hinzu
         ]
 
 + Response 201 
-
-## Contact [/businesscard/{shareId}/contact/{contactshareId}]
-
-### Get Contact  [GET]
-
-Lädt einen speziellen Kontakt
-
-+ Response 200 (application/json)
-
-            {
-                information: 
-                    {
-                        "title": ["PhD"]
-                        "firstname":"Jane",
-                        "lastname":"Doe",
-                        "additionalField1":"additionalField1",
-                    },
-                "contact":
-                    {
-                        "e-mail":"jane@doe.com",
-                        "phone":"555-555-555",
-                        "additionalField1":"additionalField1",
-                    },
-                "detail":
-                    {
-                        "business":"Housewife"
-                    }
-            }
 
 ### Delete Contact  [DELETE]
 
